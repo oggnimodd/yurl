@@ -13,10 +13,13 @@
     "db-clean": "bun delete.ts"
   },
   "dependencies": {
+    "@libsql/client": "^0.3.6",
+    "@prisma/adapter-libsql": "^5.5.2",
     "@prisma/client": "latest"
   },
   "devDependencies": {
     "@types/node": "^18.18.3",
+    "bun-types": "^1.0.7",
     "dotenv-cli": "^6.0.0",
     "prisma": "^5.4.1",
     "typescript": "^4.9.5"

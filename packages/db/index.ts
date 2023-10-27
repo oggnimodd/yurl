@@ -1,17 +1,33 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient, Prisma } from "@prisma/client";
+// 1. Import libSQL and the Prisma libSQL driver adapter
+import { PrismaLibSQL } from "@prisma/adapter-libsql";
+import { createClient } from "@libsql/client";
+import { isDev } from "./utils/isDev";
+
+const prismaClientConfig: Prisma.PrismaClientOptions = {
+  log: isDev === "development" ? ["query", "error", "warn"] : ["error"],
+};
+
+if (!isDev) {
+  // 2. Instantiate libSQL
+  const libsql = createClient({
+    // @ts-expect-error
+    url: process.env.TURSO_DATABASE_URL,
+    authToken: process.env.TURSO_AUTH_TOKEN,
+  });
+
+  // 3. Instantiate the libSQL driver adapter
+  const adapter = new PrismaLibSQL(libsql);
+
+  prismaClientConfig.adapter = adapter;
+}
 
 const globalForPrisma = globalThis as unknown as {
   prisma: PrismaClient | undefined;
 };
 
 export const prisma =
-  globalForPrisma.prisma ||
-  new PrismaClient({
-    log:
-      process.env.NODE_ENV === "development"
-        ? ["query", "error", "warn"]
-        : ["error"],
-  });
+  globalForPrisma.prisma || new PrismaClient(prismaClientConfig);
 
 export * from "@prisma/client";
 
