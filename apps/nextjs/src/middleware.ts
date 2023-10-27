@@ -1,5 +1,6 @@
 import { authMiddleware } from "@clerk/nextjs";
 import { NextFetchEvent, NextRequest, NextResponse } from "next/server";
+import { link } from "@prisma/client";
 
 export default authMiddleware({
   publicRoutes: ["/", "/sign-in", "/sign-up", "/s/"],
@@ -20,7 +21,7 @@ export default authMiddleware({
       }
 
       // Convert data to JSON:
-      const dataToJson = await data.json();
+      const dataToJson = (await data.json()) as link;
 
       if (data?.url) {
         return NextResponse.redirect(new URL(dataToJson.url));
