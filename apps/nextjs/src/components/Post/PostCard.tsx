@@ -11,9 +11,8 @@ const PostCard: FC<PostCardProps> = ({ id, title, content }) => {
   const [isDeleting, setIsDeleting] = useState(false);
   const queryClient = useQueryClient();
   const deletePost = api.post.delete.useMutation({
-    onSuccess: () => {
-      queryClient.invalidateQueries(getQueryKey(api.post));
-      setIsDeleting(false);
+    onSuccess: async () => {
+      await queryClient.invalidateQueries(getQueryKey(api.post));
     },
   });
   const onDeletePost = async (id: string) => {
