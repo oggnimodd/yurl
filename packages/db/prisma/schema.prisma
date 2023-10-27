@@ -15,3 +15,12 @@ model Post {
   title   String
   content String
 }
+
+model link {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  url         String
+  slug        String   @unique
+  description String?
+  createdAt   DateTime @default(now())
+  creatorId   String
+}
