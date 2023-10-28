@@ -10,11 +10,13 @@ coverage
 
 # database
 prisma/db.sqlite
+prisma/dev.db
 prisma/db.sqlite-journal
 
 # next.js
 .next/
 out/
+
 
 # expo
 .expo/
