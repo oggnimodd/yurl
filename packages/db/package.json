@@ -10,7 +10,8 @@
     "dev": "bun with-env prisma studio --port 5556",
     "db-push": "bun with-env prisma db push",
     "db-generate": "bun with-env prisma generate",
-    "db-clean": "bun delete.ts"
+    "db-clean": "bun delete.ts",
+    "db-migrate": "bun with-env prisma migrate dev"
   },
   "dependencies": {
     "@libsql/client": "^0.3.6",

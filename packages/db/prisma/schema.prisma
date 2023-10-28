@@ -17,7 +17,7 @@ model Post {
   content String
 }
 
-model link {
+model Link {
   id          String   @id @unique @default(cuid())
   url         String
   slug        String   @unique
