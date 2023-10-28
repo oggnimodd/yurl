@@ -2,22 +2,23 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
 }
 
 datasource db {
-  provider = "mongodb"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
 }
 
 model Post {
-  id      String @id @default(auto()) @map("_id") @db.ObjectId
+  id      String @id @unique @default(cuid())
   title   String
   content String
 }
 
 model link {
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  id          String   @id @unique @default(cuid())
   url         String
   slug        String   @unique
   description String?
