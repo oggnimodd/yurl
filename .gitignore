@@ -9,9 +9,9 @@ node_modules
 coverage
 
 # database
-db.sqlite
-dev.db
-db.sqlite-journal
+*.sqlite
+*.db
+*.sqlite-journal
 
 # next.js
 .next/
