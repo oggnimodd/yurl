@@ -23,7 +23,7 @@ export const prisma =
   globalForPrisma.prisma ||
   new PrismaClient({
     log: isDev ? ["query", "error", "warn"] : ["error"],
-    adapter: isDev ? adapter : undefined,
+    adapter: isDev ? undefined : adapter,
   });
 
 export * from "@prisma/client";
