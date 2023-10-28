@@ -13,6 +13,8 @@
     "db-clean": "bun delete.ts"
   },
   "dependencies": {
+    "@libsql/client": "^0.3.6",
+    "@prisma/adapter-libsql": "^5.5.2",
     "@prisma/client": "latest"
   },
   "devDependencies": {
