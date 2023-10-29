@@ -1,7 +1,7 @@
 import React, { FC, useLayoutEffect, useState } from "react";
 import type { GlobalProvider } from "@ladle/react";
 import { NextUIProvider } from "@nextui-org/react";
-import { playgroundTrpc } from "../playground/trpc";
+import { api } from "../@playground/trpc";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { httpBatchLink } from "@trpc/client";
 import { ClerkProvider } from "@clerk/clerk-react";
@@ -21,7 +21,7 @@ const ProviderBuilder: FC<{
 }> = ({ children }) => {
   const [queryClient] = useState(() => new QueryClient());
   const [trpcClient] = useState(() =>
-    playgroundTrpc.createClient({
+    api.createClient({
       links: [
         httpBatchLink({
           url: "http://localhost:8080/trpc",
@@ -38,11 +38,11 @@ const ProviderBuilder: FC<{
   );
 
   return (
-    <playgroundTrpc.Provider client={trpcClient} queryClient={queryClient}>
+    <api.Provider client={trpcClient} queryClient={queryClient}>
       <QueryClientProvider client={queryClient}>
         <NextUIProvider>{children}</NextUIProvider>
       </QueryClientProvider>
-    </playgroundTrpc.Provider>
+    </api.Provider>
   );
 };
 

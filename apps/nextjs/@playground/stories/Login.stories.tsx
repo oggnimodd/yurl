@@ -1,12 +1,17 @@
 import React, { FC } from "react";
-import { playgroundTrpc } from "./trpc";
+import { api } from "../trpc";
 import { SignInButton, SignOutButton, useAuth } from "@clerk/clerk-react";
 import { Button } from "@nextui-org/react";
+import type { StoryDefault } from "@ladle/react";
+
+export default {
+  title: "Auth",
+} satisfies StoryDefault;
 
 export const Login: FC = () => {
-  const { data } = playgroundTrpc.post.hello.useQuery();
+  const { data } = api.post.hello.useQuery();
   const { data: secret, isLoading: isSecretLoading } =
-    playgroundTrpc.post.protected.useQuery();
+    api.post.protected.useQuery();
   const { userId, isLoaded } = useAuth();
 
   if (!isLoaded) {
