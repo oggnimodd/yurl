@@ -20,7 +20,7 @@
   "dependencies": {
     "@clerk/nextjs": "^4.23.2",
     "@headlessui/react": "^1.7.17",
-    "@ladle/react": "^2.17.2",
+    "@ladle/react": "^3.3.0",
     "@nextui-org/react": "^2.1.13",
     "@react-aria/ssr": "^3.7.1",
     "@tanstack/react-query": "^4.33.0",
