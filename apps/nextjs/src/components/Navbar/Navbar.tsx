@@ -1,10 +1,10 @@
 import { FC } from "react";
-import { Button, Skeleton } from "@nextui-org/react";
+import { Button } from "@nextui-org/react";
 import { Brand, Container } from "@acme/ui";
 import Link from "next/link";
 import { User2 as LoginIcon } from "lucide-react";
 import { useUser, SignInButton } from "@clerk/nextjs";
-import { UserAccountNavigation } from "@/components";
+import { AuthenticatedUserNavigation } from "@/components";
 
 const Navbar: FC = () => {
   const { isLoaded, user } = useUser();
@@ -12,10 +12,8 @@ const Navbar: FC = () => {
   return (
     <Container className="flex items-center py-5 justify-between">
       <Link href="/">
-        <Brand title="Rebbit" />
+        <Brand title="yurl" />
       </Link>
-
-      {!isLoaded && <Skeleton className="w-10 h-10 rounded-full" />}
 
       {isLoaded && !user && (
         <SignInButton>
@@ -25,7 +23,7 @@ const Navbar: FC = () => {
         </SignInButton>
       )}
 
-      {isLoaded && user && <UserAccountNavigation />}
+      <AuthenticatedUserNavigation />
     </Container>
   );
 };

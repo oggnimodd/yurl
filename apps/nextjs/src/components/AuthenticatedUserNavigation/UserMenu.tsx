@@ -8,33 +8,23 @@ import {
   DropdownTrigger,
   User,
 } from "@nextui-org/react";
-import { useTheme } from "next-themes";
-import {
-  Newspaper as FeedIcon,
-  BookPlus as CreateCommunityIcon,
-  Settings as SettingsIcon,
-  Moon as DarkThemeIcon,
-  Sun as LightThemeIcon,
-  Power as LogOutIcon,
-} from "lucide-react";
+import { Power as LogOutIcon, Plus, LayoutDashboard, Bug } from "lucide-react";
 import Link from "next/link";
 
-const UserAccountNavigation = () => {
+const UserMenu = () => {
   const { isLoaded, user } = useUser();
   const { signOut } = useAuth();
-  const { setTheme, theme } = useTheme();
   const NAV_ICON_SIZE = 20;
 
-  const toggleTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark");
-  };
-
-  if (!user || !isLoaded) return null;
+  if (!user) return null;
 
   return (
     <Dropdown placement="bottom-end">
       <DropdownTrigger>
         <Avatar
+          classNames={{
+            base: "w-8 h-8",
+          }}
           as="button"
           isBordered
           className="transition-transform select-none"
@@ -65,43 +55,30 @@ const UserAccountNavigation = () => {
         </DropdownSection>
 
         <DropdownItem
-          href="/feed"
+          href="/create"
           as={Link}
-          startContent={<FeedIcon size={NAV_ICON_SIZE} className="mr-2" />}
-          key="feed"
+          startContent={<Plus size={NAV_ICON_SIZE} className="mr-2" />}
+          key="Create new link"
         >
-          Feed
+          Create new link
         </DropdownItem>
         <DropdownItem
-          href="/community"
+          href="/dahsboard"
           as={Link}
           startContent={
-            <CreateCommunityIcon size={NAV_ICON_SIZE} className="mr-2" />
+            <LayoutDashboard size={NAV_ICON_SIZE} className="mr-2" />
           }
-          key="create-community"
+          key="dashboard"
         >
-          Create Community
+          Dashboard
         </DropdownItem>
         <DropdownItem
-          href="/settings"
-          as={Link}
-          startContent={<SettingsIcon size={NAV_ICON_SIZE} className="mr-2" />}
-          key="settings"
+          href=" https://github.com/oggnimodd/yurl/issues"
+          as="a"
+          startContent={<Bug size={NAV_ICON_SIZE} className="mr-2" />}
+          key="report-bug"
         >
-          Settings
-        </DropdownItem>
-        <DropdownItem
-          startContent={
-            theme === "dark" ? (
-              <DarkThemeIcon className="mr-2" size={NAV_ICON_SIZE} />
-            ) : (
-              <LightThemeIcon className="mr-2" size={NAV_ICON_SIZE} />
-            )
-          }
-          onPress={() => toggleTheme()}
-          key="toggle-theme"
-        >
-          Toggle Theme
+          Report a bug
         </DropdownItem>
         <DropdownItem
           startContent={<LogOutIcon className="mr-2" size={NAV_ICON_SIZE} />}
@@ -117,4 +94,4 @@ const UserAccountNavigation = () => {
   );
 };
 
-export default UserAccountNavigation;
+export default UserMenu;
