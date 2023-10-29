@@ -1,16 +1,11 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "baseUrl": "./src/",
+    "baseUrl": ".",
     "paths": {
-      "components/*": ["./src/components/*"],
-      "utils/*": ["./src/utils/*"],
-      "layouts/*": ["./src/layouts/*"],
-      "stores/*": ["./src/stores/*"],
-      "types/*": ["types/*"],
-      "config/*": ["./src/config/*"],
-      "hooks/*": ["./src/hooks/*"],
-      "@ui/*": ["../../../packages/ui/*"]
+      "@/*": ["./src/*"],
+      "@playground/*": ["./playground/*"],
+      "@ui/*": ["../../packages/ui/*"]
     }
   },
   "exclude": ["cypress"],

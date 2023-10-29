@@ -1,6 +1,6 @@
 import { Button } from "@nextui-org/react";
 import { FC, useState } from "react";
-import { api } from "utils";
+import { api } from "@/utils";
 import type { Post } from "@prisma/client";
 import { useQueryClient } from "@tanstack/react-query";
 import { getQueryKey } from "@trpc/react-query";

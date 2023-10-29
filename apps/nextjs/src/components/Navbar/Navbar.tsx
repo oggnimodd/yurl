@@ -4,7 +4,7 @@ import { Brand, Container } from "@acme/ui";
 import Link from "next/link";
 import { User2 as LoginIcon } from "lucide-react";
 import { useUser, SignInButton } from "@clerk/nextjs";
-import { UserAccountNavigation } from "components";
+import { UserAccountNavigation } from "@/components";
 
 const Navbar: FC = () => {
   const { isLoaded, user } = useUser();
