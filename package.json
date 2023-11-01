@@ -23,5 +23,11 @@
   "lint-staged": {
     "**/*.{js,ts,jsx,tsx}": ["biome check --apply .", "biome format --write ."]
   },
-  "workspaces": ["apps/nextjs", "apps/react", "packages/db", "packages/api"]
+  "workspaces": [
+    "apps/nextjs",
+    "apps/react",
+    "packages/db",
+    "packages/api",
+    "packages/express-serverless"
+  ]
 }
