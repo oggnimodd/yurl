@@ -13,8 +13,10 @@
 // https://on.cypress.io/configuration
 // ***********************************************************
 
+// Fonts
+import "./styles/fonts.css";
 // Styles
-import "../../index.css";
+import "../../src/styles/globals.css";
 // Import commands.js using ES2015 syntax:
 import "./commands";
 // Alternatively you can use CommonJS syntax:
