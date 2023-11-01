@@ -1,5 +1,5 @@
-import { appRouter } from "./playground/root";
-import { createTRPCContext } from "./playground/trpc";
+import { appRouter } from "./node/root";
+import { createTRPCContext } from "./node/trpc";
 import express from "express";
 import cors from "cors";
 import { renderTrpcPanel } from "trpc-panel";

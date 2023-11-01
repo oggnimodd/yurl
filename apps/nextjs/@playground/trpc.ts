@@ -1,4 +1,4 @@
 import { createTRPCReact } from "@trpc/react-query";
-import { playgroundAppRouter } from "@acme/api";
+import { appRouter } from "@acme/api/node";
 
-export const api = createTRPCReact<typeof playgroundAppRouter>();
+export const api = createTRPCReact<typeof appRouter>();

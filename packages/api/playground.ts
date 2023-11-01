@@ -1,9 +1,9 @@
 import { trpc } from "@elysiajs/trpc";
 import { Elysia } from "elysia";
-import { appRouter } from "./playground/root";
-import { clerkPlugin } from "./playground/plugins/clerk";
+import { appRouter } from "./node/root";
+import { clerkPlugin } from "./node/plugins/clerk";
 import { cors } from "@elysiajs/cors";
-import { createTRPCContext } from "./playground/trpc";
+import { createTRPCContext } from "./node/trpc";
 import { renderTrpcPanel } from "trpc-panel";
 
 const PORT = 8080;
