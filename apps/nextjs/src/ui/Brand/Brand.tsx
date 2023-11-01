@@ -1,5 +1,5 @@
 import React from "react";
-import { cn } from "@ui/utils/cn";
+import { cn } from "@/ui";
 
 export interface BrandProps extends React.HTMLAttributes<HTMLSpanElement> {
   title: string;

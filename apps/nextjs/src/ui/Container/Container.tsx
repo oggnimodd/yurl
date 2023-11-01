@@ -1,4 +1,5 @@
-import { cn } from "@ui/utils/cn";
+import React from "react";
+import { cn } from "@/ui";
 
 export interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;

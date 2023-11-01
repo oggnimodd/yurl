@@ -23,12 +23,5 @@
   "lint-staged": {
     "**/*.{js,ts,jsx,tsx}": ["biome check --apply .", "biome format --write ."]
   },
-  "workspaces": [
-    "apps/nextjs",
-    "packages/config/tailwind",
-    "packages/ui",
-    "packages/types",
-    "packages/db",
-    "packages/api"
-  ]
+  "workspaces": ["apps/nextjs", "packages/db", "packages/api"]
 }

@@ -3,7 +3,7 @@
 import { api } from "@/utils";
 import { Input, Spinner, Button } from "@nextui-org/react";
 import { FormEvent, useRef } from "react";
-import { Container } from "@acme/ui";
+import { Container } from "@/ui";
 import PostCard from "./PostCard";
 
 const Post = () => {

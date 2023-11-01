@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Button } from "@nextui-org/react";
-import { Brand, Container } from "@acme/ui";
+import { Brand, Container } from "@/ui";
 import Link from "next/link";
 import { User2 as LoginIcon } from "lucide-react";
 import { useUser, SignInButton } from "@clerk/nextjs";

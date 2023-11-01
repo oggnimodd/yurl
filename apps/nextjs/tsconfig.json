@@ -3,12 +3,14 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
-      "@playground/*": ["@playground/*"],
-      "@ui/*": ["../../packages/ui/*"]
+      "@/*": [
+        "./src/*"
+      ],
+      "@playground/*": [
+        "@playground/*"
+      ]
     }
   },
-  "exclude": ["cypress"],
   "include": [
     "next-env.d.ts",
     "../../packages/auth/next-auth.d.ts",
@@ -16,5 +18,8 @@
     "**/*.tsx",
     "**/*.cjs",
     "**/*.mjs"
+  ],
+  "exclude": [
+    "node_modules"
   ]
 }

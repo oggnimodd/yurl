@@ -9,7 +9,7 @@ import { ThemeProvider } from "next-themes";
 import { api } from "@/utils";
 import { ClerkProvider } from "@clerk/nextjs";
 import { NextUIProvider } from "@nextui-org/react";
-import { cn } from "@acme/ui";
+import { cn } from "@/ui";
 
 export const fontSans = Inter({
   variable: "--font-sans",

@@ -27,7 +27,6 @@ export default defineConfig({
     alias: {
       "next/original-image": require.resolve("next/image"),
       "next/image": path.resolve(__dirname, "./.ladle/UnoptimizedImage.tsx"),
-      "@ui": path.resolve(__dirname, "../../packages/ui"),
     },
   },
   esbuild: {
