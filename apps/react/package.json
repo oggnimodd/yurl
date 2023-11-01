@@ -7,7 +7,7 @@
     "dev": "bun with-env vite",
     "build": "tsc && vite build",
     "preview": "bun with-env vite preview",
-    "ladle:dev": "ladle serve",
+    "ladle:dev": "bun with-env ladle serve",
     "ladle:build": "ladle build",
     "ladle:preview": "ladle preview",
     "with-env": "dotenv -e ../../.env --"
