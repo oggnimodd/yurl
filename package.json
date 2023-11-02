@@ -26,6 +26,7 @@
   "workspaces": [
     "apps/nextjs",
     "apps/react",
+    "apps/vue",
     "packages/db",
     "packages/api",
     "packages/express-serverless"
