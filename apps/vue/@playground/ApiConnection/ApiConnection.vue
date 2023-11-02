@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { api } from "../../trpc";
+import { api } from "../../src/trpc";
 import { useQuery } from '@tanstack/vue-query';
 
 const {
