@@ -25,10 +25,10 @@
   },
   "workspaces": [
     "apps/nextjs",
-    "packages/config/tailwind",
-    "packages/ui",
-    "packages/types",
+    "apps/react",
+    "apps/vue",
     "packages/db",
-    "packages/api"
+    "packages/api",
+    "packages/express-serverless"
   ]
 }

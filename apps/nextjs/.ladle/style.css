@@ -7,7 +7,7 @@
 @media (min-width: 768px) {
   div#ladle-root {
     flex-direction: row-reverse;
-    @apply min-h-screen dark:bg-black dark:text-white;
+    @apply min-h-screen;
   }
 
   div[data-reach-dialog-overlay] > div {
@@ -18,4 +18,25 @@
 
 body {
   position: relative;
+}
+
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.ladle-main > div {
+  @apply min-h-screen px-10 pt-10;
+}
+
+#ladle-root > div {
+  @apply !min-h-screen;
+}
+
+.ladle-main,
+.frame-content {
+  @apply bg-background p-0;
+}
+
+#ladle-root, .dark .ladle-background{
+  @apply bg-background;
 }

@@ -81,4 +81,10 @@ dist
 dist-ssr
 *.local
 
+# @playground
+**/@playground/components/
+**/@playground/layouts/
+**/@playground/pages/
 
+# Local Netlify folder
+.netlify

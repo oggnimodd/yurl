@@ -4,12 +4,12 @@ import React from "react";
 import type { AppType } from "next/app";
 import { Inter } from "next/font/google";
 import Head from "next/head";
-import { PwaMeta } from "components";
+import { PwaMeta } from "@/components";
 import { ThemeProvider } from "next-themes";
-import { api } from "utils";
+import { api } from "@/utils";
 import { ClerkProvider } from "@clerk/nextjs";
 import { NextUIProvider } from "@nextui-org/react";
-import { cn } from "@acme/ui";
+import { cn } from "@/ui";
 
 export const fontSans = Inter({
   variable: "--font-sans",

@@ -1,0 +1,41 @@
+{
+  "name": "yurl-vue",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "bun with-env vite",
+    "build": "vue-tsc && vite build",
+    "preview": "bun with-env vite preview",
+    "with-env": "dotenv -e ../../.env --",
+    "storybook": "bun with-env storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "dependencies": {
+    "@tanstack/vue-query": "^5.4.3",
+    "@trpc/client": "^10.43.0",
+    "dotenv": "^16.3.1",
+    "primevue": "^3.39.0",
+    "serverless-http": "^3.2.0",
+    "superjson": "^2.2.0",
+    "vue": "^3.3.4",
+    "vue-clerk": "^0.0.12"
+  },
+  "devDependencies": {
+    "@storybook/addon-essentials": "^7.5.2",
+    "@storybook/addon-interactions": "^7.5.2",
+    "@storybook/addon-links": "^7.5.2",
+    "@storybook/blocks": "^7.5.2",
+    "@storybook/testing-library": "^0.2.2",
+    "@storybook/vue3": "^7.5.2",
+    "@storybook/vue3-vite": "^7.5.2",
+    "@vitejs/plugin-vue": "^4.2.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "storybook": "^7.5.2",
+    "typescript": "^5.0.2",
+    "vite": "^4.4.5",
+    "vite-tsconfig-paths": "^4.2.1",
+    "vue-tsc": "^1.8.5"
+  }
+}

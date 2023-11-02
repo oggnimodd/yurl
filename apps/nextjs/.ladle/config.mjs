@@ -1,7 +1,7 @@
 export default {
   stories: [
     "src/**/*.stories.{js,jsx,ts,tsx}",
-    "playground/**/*.stories.{js,jsx,ts,tsx}",
+    "@playground/**/*.stories.{js,jsx,ts,tsx}",
   ],
   addons: {
     a11y: {
