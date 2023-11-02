@@ -1,38 +1,32 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { watch } from 'vue';
+import { useAuth } from 'vue-clerk'
+import { SignInButton, SignOutButton } from 'vue-clerk'
+import { useQueryClient } from '@tanstack/vue-query';
 
-defineProps<{ msg: string }>()
+const queryClient = useQueryClient();
 
-const count = ref(0)
+
+const { isLoaded, userId } = useAuth()
+
+watch(userId, () => {
+  queryClient.invalidateQueries({
+    queryKey: ["message"]
+  })
+})
+
 </script>
 
 <template>
-  <h1>{{ msg }}</h1>
-
-  <div class="card">
-    <button type="button" @click="count++">count is {{ count }}</button>
-    <p>
-      Edit
-      <code>components/HelloWorld.vue</code> to test HMR
-    </p>
+  <div v-if="isLoaded && !userId">
+    <p>You need to sign in my dude</p>
+    <SignInButton />
   </div>
 
-  <p>
-    Check out
-    <a href="https://vuejs.org/guide/quick-start.html#local" target="_blank"
-      >create-vue</a
-    >, the official Vue + Vite starter
-  </p>
-  <p>
-    Install
-    <a href="https://github.com/vuejs/language-tools" target="_blank">Volar</a>
-    in your IDE for a better DX
-  </p>
-  <p class="read-the-docs">Click on the Vite and Vue logos to learn more</p>
+  <div v-if="isLoaded && userId">
+    <div>
+      <p>You can click this button if you want to logout</p>
+      <SignOutButton>Logout</SignOutButton>
+    </div>
+  </div>
 </template>
-
-<style scoped>
-.read-the-docs {
-  color: #888;
-}
-</style>

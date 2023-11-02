@@ -4,13 +4,19 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "bun with-env vite",
     "build": "vue-tsc && vite build",
-    "preview": "vite preview"
+    "preview": "bun with-env vite preview",
+    "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {
+    "@tanstack/vue-query": "^5.4.3",
+    "@trpc/client": "^10.43.0",
+    "dotenv": "^16.3.1",
     "primevue": "^3.39.0",
-    "vue": "^3.3.4"
+    "superjson": "^2.2.0",
+    "vue": "^3.3.4",
+    "vue-clerk": "^0.0.12"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.2.3",

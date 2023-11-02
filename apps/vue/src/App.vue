@@ -1,11 +1,21 @@
 <script setup lang="ts">
-import Button from "primevue/button"
+import { HelloWorld, Data } from "./components";
+import ProgressSpinner from "primevue/progressspinner";
+import { useAuth } from "vue-clerk";
+
+const { isLoaded } = useAuth();
 
 </script>
 
 <template>
   <div>
-    <Button size="small">Hello</Button>
+
+    <div v-if="!isLoaded">
+      <ProgressSpinner stroke-width="4" />
+    </div>
+
+    <HelloWorld />
+    <Data />
   </div>
 </template>
 
