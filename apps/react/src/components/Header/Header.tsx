@@ -25,8 +25,6 @@ import {
 import { openLinkInNewTab } from "utils/navigation";
 
 const AuthUserMenu = () => {
-  const afterSignInUrl = `${window.location.protocol}//${window.location.host}/dashboard`;
-
   const navigate = useNavigate();
   const { user, isLoaded } = useUser();
   const { signOut } = useAuth();
@@ -37,7 +35,7 @@ const AuthUserMenu = () => {
 
   if (isLoaded && !user)
     return (
-      <Button afterSignInUrl={afterSignInUrl} component={SignInButton}>
+      <Button afterSignInUrl="/dashboard" component={SignInButton}>
         Login
       </Button>
     );
