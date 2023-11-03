@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Header } from "components";
+import { Header, CommandPalette } from "components";
 import { Container } from "@mantine/core";
 
 interface CommonLayoutProps {
@@ -10,6 +10,7 @@ const CommonLayout: FC<CommonLayoutProps> = ({ children }) => {
   return (
     <>
       <Header />
+      <CommandPalette />
       <main>
         <Container>{children}</Container>
       </main>
