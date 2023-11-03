@@ -6,6 +6,7 @@ import { ClerkProvider } from "@clerk/clerk-react";
 import { api } from "trpc";
 import { MantineProvider } from "@mantine/core";
 import { theme } from "./theme";
+import { BrowserRouter } from "react-router-dom";
 
 export const getCookie = (name: string) => {
   const value = `; ${document.cookie}`;
@@ -49,7 +50,7 @@ const Provider: FC<{
               ...theme,
             }}
           >
-            {children}
+            <BrowserRouter>{children}</BrowserRouter>
           </MantineProvider>
         </QueryClientProvider>
       </api.Provider>

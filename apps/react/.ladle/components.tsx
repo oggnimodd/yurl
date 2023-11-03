@@ -1,7 +1,6 @@
 import React, { useEffect, useLayoutEffect } from "react";
 import type { GlobalProvider } from "@ladle/react";
 import AppProvider from "../src/Provider";
-import { BrowserRouter } from "react-router-dom";
 
 import "@mantine/core/styles.css";
 import "@mantine/spotlight/styles.css";
@@ -75,9 +74,7 @@ export const Provider: GlobalProvider = ({ children, globalState }) => {
 
   return (
     <div className={theme}>
-      <BrowserRouter>
-        <AppProvider>{children}</AppProvider>
-      </BrowserRouter>
+      <AppProvider>{children}</AppProvider>
     </div>
   );
 };
