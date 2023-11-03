@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { useAuth, useClerk } from "@clerk/clerk-react";
+import { Navigate } from "react-router-dom";
 
 interface ProtectedRouteProps {
   children: React.ReactNode;
@@ -20,6 +21,7 @@ const ProtectedRoute: FC<ProtectedRouteProps> = ({ children, path }) => {
       afterSignInUrl: path,
       afterSignUpUrl: path,
     });
+    return <Navigate to="/" />;
   } else {
     return children;
   }
