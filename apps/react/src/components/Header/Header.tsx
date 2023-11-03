@@ -1,5 +1,5 @@
 import { FC, useMemo } from "react";
-import { useAuth, useUser } from "@clerk/clerk-react";
+import { SignInButton, useAuth, useUser } from "@clerk/clerk-react";
 import { Link, useNavigate } from "react-router-dom";
 import {
   Container,
@@ -9,6 +9,7 @@ import {
   ActionIcon,
   useMantineColorScheme,
   rem,
+  Button,
 } from "@mantine/core";
 import { IconMoonFilled, IconSun } from "@tabler/icons-react";
 import { Spotlight, SpotlightActionData, spotlight } from "@mantine/spotlight";
@@ -24,6 +25,9 @@ import {
 import { openLinkInNewTab } from "utils/navigation";
 
 const AuthUserMenu = () => {
+  const afterSignInUrl = `${window.location.protocol}//${window.location.host}/dashboard`;
+
+  const navigate = useNavigate();
   const { user, isLoaded } = useUser();
   const { signOut } = useAuth();
 
@@ -31,7 +35,17 @@ const AuthUserMenu = () => {
     return <Skeleton height={40} circle animate />;
   }
 
-  if (isLoaded && !user) return null;
+  if (isLoaded && !user)
+    return (
+      <Button afterSignInUrl={afterSignInUrl} component={SignInButton}>
+        Login
+      </Button>
+    );
+
+  const handleSignOut = () => {
+    signOut();
+    navigate("/");
+  };
 
   return (
     <Menu position="bottom-end" shadow="md" width={200}>
@@ -71,7 +85,7 @@ const AuthUserMenu = () => {
         <Menu.Item
           color="red"
           component="button"
-          onClick={() => signOut()}
+          onClick={handleSignOut}
           leftSection={
             <IconLogout2
               style={{ width: rem(24), height: rem(24) }}
