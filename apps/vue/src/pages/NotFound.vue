@@ -4,7 +4,7 @@ import Button from "primevue/button"
 </script>
 
 <template>
-  <CommonLayout>
+  <CommonLayout :require-auth="false">
     <div class="flex flex-col items-center py-5">
       <span class="pi pi-exclamation-triangle text-6xl mx-auto text-primary-500"></span>
       <p class="text-lg font-medium">Opps, page not found</p>

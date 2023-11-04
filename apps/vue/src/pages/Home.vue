@@ -4,7 +4,7 @@ import { CommonLayout } from "@/layouts"
 </script>
 
 <template>
-  <CommonLayout>
+  <CommonLayout :require-auth="false">
     <p>
       This is the homepage
     </p>
