@@ -1,6 +1,8 @@
-import type { Preview } from "@storybook/vue3";
 import "../src/style.css";
 import "primevue/resources/themes/lara-dark-teal/theme.css";
+import "primeicons/primeicons.css";
+
+import type { Preview } from "@storybook/vue3";
 import { VueQueryPlugin } from "@tanstack/vue-query";
 import { clerkPlugin } from "vue-clerk";
 import PrimeVue from "primevue/config";
