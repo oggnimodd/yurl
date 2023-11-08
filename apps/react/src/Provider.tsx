@@ -7,6 +7,7 @@ import { api } from "trpc";
 import { MantineProvider } from "@mantine/core";
 import { theme } from "./theme";
 import { BrowserRouter } from "react-router-dom";
+import { Notifications } from "@mantine/notifications";
 
 export const getCookie = (name: string) => {
   const value = `; ${document.cookie}`;
@@ -50,6 +51,7 @@ const Provider: FC<{
               ...theme,
             }}
           >
+            <Notifications position="bottom-right" zIndex={1000} />
             <BrowserRouter>{children}</BrowserRouter>
           </MantineProvider>
         </QueryClientProvider>

@@ -4,6 +4,7 @@ import AppProvider from "../src/Provider";
 
 import "@mantine/core/styles.css";
 import "@mantine/spotlight/styles.css";
+import "@mantine/notifications/styles.css";
 import "../src/styles/index.css";
 import "./ladle.css";
 

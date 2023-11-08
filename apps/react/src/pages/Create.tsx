@@ -1,9 +1,10 @@
+import { CreateLinkForm } from "components";
 import { CommonLayout } from "layouts";
 
 const Home = () => {
   return (
     <CommonLayout>
-      <p>This is the link creation page</p>
+      <CreateLinkForm />
     </CommonLayout>
   );
 };
