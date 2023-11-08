@@ -1,4 +1,4 @@
-import { CSSProperties, useMemo } from "react";
+import { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { rem } from "@mantine/core";
 import { Spotlight, SpotlightActionData } from "@mantine/spotlight";
@@ -10,20 +10,9 @@ import {
   IconPlus,
 } from "@tabler/icons-react";
 import { openLinkInNewTab } from "utils/navigation";
-import { REPO_URL } from "constants/meta";
+import { commandPaletteIconBaseProps } from "./CommandPalette";
 
-const commandPaletteIconBaseProps: {
-  style: CSSProperties;
-  stroke: string | number;
-} = {
-  style: {
-    width: rem(24),
-    height: rem(24),
-  },
-  stroke: 1.5,
-};
-
-const CommandPalette = () => {
+export const CommandPalette = () => {
   const navigate = useNavigate();
 
   const actions: SpotlightActionData[] = useMemo(() => {
@@ -53,7 +42,7 @@ const CommandPalette = () => {
         id: "source-code",
         label: "Source Code",
         description: "See source code",
-        onClick: () => openLinkInNewTab(REPO_URL),
+        onClick: () => openLinkInNewTab("https://github.com/oggnimodd/yurl/"),
         leftSection: <IconBrandGithub {...commandPaletteIconBaseProps} />,
       },
     ];
@@ -78,5 +67,3 @@ const CommandPalette = () => {
     </>
   );
 };
-
-export default CommandPalette;

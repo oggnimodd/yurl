@@ -1,9 +1,10 @@
 import { CommonLayout } from "layouts";
+import { Hero } from "components";
 
 const Home = () => {
   return (
     <CommonLayout>
-      <p>This is my homepage</p>
+      <Hero />
     </CommonLayout>
   );
 };
