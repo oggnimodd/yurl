@@ -49,8 +49,6 @@ const CreateLinkForm: FC = () => {
         message: "An error occurred while checking the slug",
         color: "red",
       });
-
-      return true;
     }
   };
 
@@ -62,7 +60,7 @@ const CreateLinkForm: FC = () => {
         type: "manual",
         message: "Slug already exists",
       });
-    } else {
+    } else if (typeof slugExists !== "undefined") {
       try {
         await addLinkMutation({
           ...data,
