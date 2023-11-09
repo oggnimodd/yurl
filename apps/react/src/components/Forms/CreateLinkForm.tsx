@@ -29,27 +29,30 @@ const CreateLinkForm: FC = () => {
 
   const { mutateAsync: addLinkMutation, isLoading: isCreatingLink } =
     api.link.createLink.useMutation();
-  const { refetch } = api.link.checkSlug.useQuery(
-    {
-      customSlug: getValues("slug"),
-    },
-    {
-      refetchOnWindowFocus: false,
-      enabled: Boolean(getValues("slug")),
-    },
-  );
+  const { refetch: checkSlug, isFetching: isCheckingSlug } =
+    api.link.checkSlug.useQuery(
+      {
+        customSlug: getValues("slug"),
+      },
+      {
+        refetchOnWindowFocus: false,
+        enabled: Boolean(getValues("slug")),
+        retry: false,
+      },
+    );
 
   const checkSlugExists = async () => {
-    try {
-      const { data } = await refetch();
+    const { data } = await checkSlug();
+
+    if (typeof data?.isSlugExist !== "undefined") {
       return data?.isSlugExist;
-    } catch (error) {
-      notifications.show({
-        title: "Error",
-        message: "An error occurred while checking the slug",
-        color: "red",
-      });
     }
+
+    notifications.show({
+      title: "Error",
+      message: "An error occurred while checking the slug",
+      color: "red",
+    });
   };
 
   const onSubmit = async (data: LinkCreationData) => {
@@ -135,7 +138,7 @@ const CreateLinkForm: FC = () => {
         />
         <Button
           leftSection={<IconSend size={18} />}
-          loading={isCreatingLink}
+          loading={isCreatingLink || isCheckingSlug}
           className="self-start"
           type="submit"
         >
