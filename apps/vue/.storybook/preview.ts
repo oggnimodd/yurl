@@ -6,11 +6,13 @@ import type { Preview } from "@storybook/vue3";
 import { VueQueryPlugin } from "@tanstack/vue-query";
 import { clerkPlugin } from "vue-clerk";
 import PrimeVue from "primevue/config";
+import ToastService from "primevue/toastservice";
 
 import { setup } from "@storybook/vue3";
 
 setup((app) => {
   app.use(PrimeVue);
+  app.use(ToastService);
 
   app.use(clerkPlugin, {
     // @ts-ignore

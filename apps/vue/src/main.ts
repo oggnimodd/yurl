@@ -8,10 +8,12 @@ import App from "./App.vue";
 import { VueQueryPlugin } from "@tanstack/vue-query";
 import { clerkPlugin } from "vue-clerk";
 import { router } from "./Routes";
+import ToastService from "primevue/toastservice";
 
 const app = createApp(App);
 
 app.use(PrimeVue);
+app.use(ToastService);
 
 app.use(clerkPlugin, {
   publishableKey: import.meta.env.VITE_CLERK_PUBLISHABLE_KEY,
