@@ -4,7 +4,7 @@ export const linkCreationSchema = z.object({
   url: z
     .string()
     .min(1, "URL is required")
-    .max(200, "URL should be between 1 and 200 characters")
+    .max(2000, "URL should be between 1 and 200 characters")
     .url({
       message: "Please enter a valid URL. It should start with https://.",
     }),
