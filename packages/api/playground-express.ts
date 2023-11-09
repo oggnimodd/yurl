@@ -11,6 +11,7 @@ const PORT = 8080;
 const app = express();
 
 app.use(cors());
+app.use(express.json());
 
 // Custom middleware function to check authentication
 app.use(ClerkExpressWithAuth());
