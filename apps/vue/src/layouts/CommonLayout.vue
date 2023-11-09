@@ -4,11 +4,12 @@ import { onMounted } from "vue";
 import { watch } from "vue";
 import { useAuth, useClerk } from "vue-clerk";
 import { useRoute, useRouter } from "vue-router";
+import { appearance } from "@/clerk"
 
 interface Props {
   requireAuth?: boolean
 }
-const { redirectToSignIn } = useClerk()
+const { openSignIn } = useClerk()
 const { isLoaded, isSignedIn } = useAuth()
 
 const { path } = useRoute()
@@ -21,8 +22,9 @@ const { requireAuth } = withDefaults(defineProps<Props>(), {
 const checkAuth = async () => {
   if (isLoaded.value && requireAuth && !isSignedIn.value) {
     await router.push("/")
-    await redirectToSignIn({
-      redirectUrl: path
+    await openSignIn({
+      redirectUrl: path,
+      appearance
     })
   }
 }

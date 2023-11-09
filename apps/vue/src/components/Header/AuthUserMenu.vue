@@ -7,15 +7,18 @@ import Button from 'primevue/button';
 import Avatar from 'primevue/avatar';
 import Menu, { MenuProps } from "primevue/menu";
 import { useClerk, useUser, useAuth } from 'vue-clerk'
+import { appearance } from "@/clerk"
 
 const { signOut } = useAuth();
 const { isLoaded, user } = useUser()
-const { redirectToSignIn } = useClerk()
+const { openSignIn } = useClerk()
 
 
 const handleSignIn = () => {
-  redirectToSignIn({
-    afterSignInUrl: "/dashboard"
+  openSignIn({
+    afterSignInUrl: "/dashboard",
+    afterSignUpUrl: "/dashboard",
+    appearance
   })
 }
 

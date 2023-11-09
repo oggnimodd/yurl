@@ -7,18 +7,12 @@ const routes = [
   {
     path: "/",
     component: Home,
-    meta: {
-      isPublic: true,
-    },
   },
   { path: "/new", component: Create },
   { path: "/dashboard", component: Dashboard },
   {
     path: "/:pathMatch(.*)*",
     component: NotFound,
-    meta: {
-      isPublic: true,
-    },
   },
 ];
 
