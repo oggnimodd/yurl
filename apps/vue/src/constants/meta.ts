@@ -1,1 +1,1 @@
-export const REPO_URL = "https://github.com/your-repo-url";
+export const REPO_URL = "https://github.com/oggnimodd/yurl";
