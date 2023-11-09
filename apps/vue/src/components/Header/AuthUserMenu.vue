@@ -55,7 +55,13 @@ const toggle = (event: MouseEvent) => {
 
 <template>
   <Skeleton v-if="!isLoaded" shape="circle" size="2.5rem" />
-  <Button v-else-if="isLoaded && !user" @click="handleSignIn">Login</Button>
+  <Button
+    icon="pi pi-user"
+    size="small"
+    v-else-if="isLoaded && !user"
+    @click="handleSignIn"
+    label="Login"
+  />
   <Avatar
     @click="toggle"
     role="button"

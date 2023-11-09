@@ -1,14 +1,10 @@
 <script setup lang="ts">
-import Button from "primevue/button";
 import { CommonLayout } from "@/layouts";
+import { Hero } from "@/components";
 </script>
 
 <template>
   <CommonLayout :require-auth="false">
-    <p>This is the homepage</p>
-
-    <router-link to="/new">
-      <Button size="small">Create new Link</Button>
-    </router-link>
+    <Hero />
   </CommonLayout>
 </template>

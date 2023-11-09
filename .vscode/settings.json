@@ -11,7 +11,9 @@
     "**/dist": true,
     "**/.turbo": true,
     "**/tsconfig.tsbuildinfo": true,
-    "**/.astro": true
+    "**/.astro": true,
+    "**/react": true,
+    "**/nextjs": true
   },
   "editor.defaultFormatter": "biomejs.biome",
   "typescript.tsdk": "node_modules/typescript/lib",
