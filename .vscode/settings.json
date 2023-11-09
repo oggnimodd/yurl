@@ -14,9 +14,6 @@
     "**/.astro": true
   },
   "editor.defaultFormatter": "biomejs.biome",
-  "editor.codeActionsOnSave": {
-    "quickfix.rome": true
-  },
   "typescript.tsdk": "node_modules/typescript/lib",
   "[jsonc]": {
     "editor.defaultFormatter": "biomejs.biome"
@@ -41,6 +38,12 @@
     "editor.defaultFormatter": "Prisma.prisma"
   },
   "[vue]": {
-    "editor.defaultFormatter": "Vue.volar"
-  }
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "quickfix.rome": true,
+    "source.fixAll.eslint": true
+  },
+  "eslint.validate": ["vue"]
 }

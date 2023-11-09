@@ -1,50 +1,48 @@
 <script setup lang="ts">
-import { Header } from "@/components"
+import { Header } from "@/components";
 import { onMounted } from "vue";
 import { watch } from "vue";
 import { useAuth, useClerk } from "vue-clerk";
 import { useRoute, useRouter } from "vue-router";
-import { appearance } from "@/clerk"
+import { appearance } from "@/clerk";
 
 interface Props {
-  requireAuth?: boolean
+  requireAuth?: boolean;
 }
-const { openSignIn } = useClerk()
-const { isLoaded, isSignedIn } = useAuth()
+const { openSignIn } = useClerk();
+const { isLoaded, isSignedIn } = useAuth();
 
-const { path } = useRoute()
-const router = useRouter()
+const { path } = useRoute();
+const router = useRouter();
 
 const { requireAuth } = withDefaults(defineProps<Props>(), {
-  requireAuth: true
-})
+  requireAuth: true,
+});
 
 const checkAuth = async () => {
   if (isLoaded.value && requireAuth && !isSignedIn.value) {
-    await router.push("/")
+    await router.push("/");
     await openSignIn({
       redirectUrl: path,
-      appearance
-    })
+      appearance,
+    });
   }
-}
+};
 
 watch(isLoaded, async () => {
-  await checkAuth()
-})
+  await checkAuth();
+});
 
 watch(isSignedIn, async (newValue, oldValue) => {
   if (oldValue && !newValue) {
-    await router.push("/")
+    await router.push("/");
   }
-})
+});
 
 onMounted(async () => {
-  await checkAuth()
-})
-
+  await checkAuth();
+});
 </script>
-
 
 <template>
   <div>
