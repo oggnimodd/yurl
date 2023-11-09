@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "bun with-env vite",
-    "build": "vue-tsc && vite build",
+    "build": "vue-tsc && bun with-env vite build",
     "preview": "bun with-env vite preview",
     "with-env": "dotenv -e ../../.env --",
     "storybook": "bun with-env storybook dev -p 6006",
