@@ -10,7 +10,8 @@
     "ladle:dev": "bun with-env ladle serve",
     "ladle:build": "ladle build",
     "ladle:preview": "ladle preview",
-    "with-env": "dotenv -e ../../.env --"
+    "with-env": "dotenv -e ../../.env --",
+    "netlify:dev": "NODE_ENV=development bun with-env netlify dev"
   },
   "dependencies": {
     "@clerk/clerk-react": "^4.27.1",
@@ -20,10 +21,12 @@
     "@mantine/hooks": "^7.1.7",
     "@mantine/notifications": "^7.2.1",
     "@mantine/spotlight": "^7.1.7",
+    "@netlify/functions": "^2.3.0",
     "@tabler/icons-react": "^2.40.0",
     "@tanstack/react-query": "^4.33.0",
     "@trpc/client": "^10.38.0",
     "@trpc/react-query": "^10.38.0",
+    "axios": "^1.6.1",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "framer-motion": "^10.16.4",
