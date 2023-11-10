@@ -11,7 +11,10 @@ export const linkCreationSchema = z.object({
   slug: z
     .string()
     .min(3, "Slug should be between 3 and 24 characters")
-    .max(24, "Slug should be between 3 and 24 characters"),
+    .max(24, "Slug should be between 3 and 24 characters")
+    .refine((value) => /^[a-zA-Z0-9-_]+$/.test(value), {
+      message: "Slug can only contain alphanumeric characters, '-' and '_'",
+    }),
   description: z
     .string()
     .max(500, "Description should be between 1 and 500 characters")
