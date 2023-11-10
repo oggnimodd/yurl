@@ -10,6 +10,7 @@ import {
 import { FC } from "react";
 import { QRCodeSVG } from "qrcode.react";
 import { notifications } from "@mantine/notifications";
+import { DeleteLinkForm, EditLinkForm } from "components";
 
 export interface CardProps {
   id: string;
@@ -38,15 +39,13 @@ const Card: FC<CardProps> = ({ id, url, slug, description = "" }) => {
     });
   };
 
-  console.log(menuOpened);
-
   return (
     <Paper
       p="md"
       shadow="xs"
-      className="flex justify-between rounded-lg border border-gray-8 bg-midnight p-4 transition-all hover:shadow-lg"
+      className="flex justify-between rounded-lg border border-gray-8 p-4 transition-all hover:shadow-lg"
     >
-      <div className="flex flex-col">
+      <div className="flex flex-col w-2/3">
         <div className="flex items-center gap-x-3 mb-2 items-center">
           <a
             className="text-lg font-semibold text-black dark:text-gray-1 transition-all hover:text-blue-6 no-underline"
@@ -69,12 +68,14 @@ const Card: FC<CardProps> = ({ id, url, slug, description = "" }) => {
             </ActionIcon>
           </div>
         </div>
-        <Text className="text-gray-8 dark:text-gray-5 mb-1">{url}</Text>
-        <Text className="text-gray-7 dark:text-gray-6 text-sm">
+        <Text className="text-gray-8 dark:text-gray-5 mb-1 truncate">
+          {url}
+        </Text>
+        <Text className="text-gray-7 dark:text-gray-6 text-sm truncate">
           {description}
         </Text>
       </div>
-      <div>
+      <div className="flex flex-col max-w-1/3">
         <Menu opened={menuOpened} onChange={toggleMenu}>
           <Menu.Target>
             <Button
@@ -116,7 +117,7 @@ const Card: FC<CardProps> = ({ id, url, slug, description = "" }) => {
           onClose={handleEditModal.close}
           title={`Edit: /s/${slug}`}
         >
-          <Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
+          <EditLinkForm linkId={id} url={url} description={description} />
         </Modal>
         <Modal
           centered
@@ -124,7 +125,7 @@ const Card: FC<CardProps> = ({ id, url, slug, description = "" }) => {
           onClose={handleDeleteModal.close}
           title={`Delete: /s/${slug}`}
         >
-          <Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
+          <DeleteLinkForm linkId={id} />
         </Modal>
 
         <Modal
