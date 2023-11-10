@@ -2,14 +2,14 @@ import { useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
 import {
   TextInput,
-  Alert,
   Loader as MantineLoader,
   Button,
+  Text,
 } from "@mantine/core";
 import { api } from "trpc";
 import { Link } from "react-router-dom";
 import { Card } from "components";
-import { IconRocket, IconSearch } from "@tabler/icons-react";
+import { IconRocket, IconSearch, IconAlertTriangle } from "@tabler/icons-react";
 import { useDebouncedState } from "@mantine/hooks";
 import Fuse from "fuse.js";
 
@@ -24,9 +24,12 @@ const Loader = () => {
 
 const ErrorMessage = ({ message = "Something went wrong" }) => {
   return (
-    <Alert>
-      <p className="text-center">{message}</p>
-    </Alert>
+    <div className="flex flex-col items-center py-5 gap-3">
+      <IconAlertTriangle className="text-red-6" size={64} />
+      <Text fw="bold" c="red" className="text-center">
+        {message}
+      </Text>
+    </div>
   );
 };
 
