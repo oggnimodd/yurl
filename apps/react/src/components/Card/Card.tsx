@@ -154,7 +154,7 @@ const Card: FC<CardProps> = ({ id, url, slug, description = "" }) => {
           centered
         >
           <div className="flex flex-col items-center">
-            <div className="w-10/12 xs:w-64">
+            <div className="w-10/12 xs:w-64 p-4 bg-white">
               <QRCodeSVG className="!w-full !h-full" value={targetUrl} />
             </div>
             <Text className="text-center mt-5 text-sm">
