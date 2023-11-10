@@ -101,7 +101,7 @@ const Dashboard = () => {
           No links found for <span className="font-bold">"{searchLinks}"</span>
         </p>
       ) : (
-        <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="pb-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {(searchLinks ? filteredLinks : linksData).map((link) => (
             <Card
               key={link.id}
