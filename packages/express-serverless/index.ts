@@ -7,6 +7,7 @@ import { ClerkExpressWithAuth } from "@clerk/clerk-sdk-node";
 const app = express();
 
 app.use(cors());
+app.use(express.json());
 
 const API_URL = "/api";
 

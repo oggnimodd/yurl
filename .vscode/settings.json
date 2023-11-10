@@ -11,7 +11,9 @@
     "**/dist": true,
     "**/.turbo": true,
     "**/tsconfig.tsbuildinfo": true,
-    "**/.astro": true
+    "**/.astro": true,
+    "**/nextjs": true,
+    "**/vue": true
   },
   "editor.defaultFormatter": "biomejs.biome",
   "editor.codeActionsOnSave": {

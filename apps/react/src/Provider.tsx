@@ -6,6 +6,8 @@ import { ClerkProvider } from "@clerk/clerk-react";
 import { api } from "trpc";
 import { MantineProvider } from "@mantine/core";
 import { theme } from "./theme";
+import { BrowserRouter } from "react-router-dom";
+import { Notifications } from "@mantine/notifications";
 
 export const getCookie = (name: string) => {
   const value = `; ${document.cookie}`;
@@ -26,7 +28,8 @@ const Provider: FC<{
     api.createClient({
       links: [
         httpBatchLink({
-          url: "http://localhost:8080/trpc",
+          url:
+            import.meta.env.VITE_APP_TRPC_URL || "http://localhost:8080/trpc",
           // You can pass any HTTP headers you wish here
           async headers() {
             return {
@@ -49,7 +52,8 @@ const Provider: FC<{
               ...theme,
             }}
           >
-            {children}
+            <Notifications position="bottom-right" zIndex={1000} />
+            <BrowserRouter>{children}</BrowserRouter>
           </MantineProvider>
         </QueryClientProvider>
       </api.Provider>
