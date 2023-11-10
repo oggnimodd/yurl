@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "bun with-env vite",
-    "build": "tsc && vite build",
+    "build": "tsc && bun with-env vite build",
     "preview": "bun with-env vite preview",
     "ladle:dev": "bun with-env ladle serve",
     "ladle:build": "ladle build",
