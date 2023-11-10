@@ -1,6 +1,5 @@
 import { useState, useEffect, FC } from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
 import { Button, TextInput, Alert, Text } from "@mantine/core";
 import { IconTrash, IconInfoCircle } from "@tabler/icons-react";
 import { nanoid } from "nanoid";
@@ -12,11 +11,15 @@ const VALIDATION_ERROR_MESSAGE =
 const DELETION_ERROR_MESSAGE = "An error occurred while deleting the link";
 const DELETION_SUCCESS_MESSAGE = "Link deleted successfully";
 
-interface DeleteProps {
+interface DeleteLinkFormProps {
   linkId: string;
+  handleSuccess?: () => void;
 }
 
-const DeleteLinkForm: FC<DeleteProps> = ({ linkId }) => {
+const DeleteLinkForm: FC<DeleteLinkFormProps> = ({
+  linkId,
+  handleSuccess = () => {},
+}) => {
   const {
     handleSubmit,
     register,
@@ -24,7 +27,6 @@ const DeleteLinkForm: FC<DeleteProps> = ({ linkId }) => {
     setError,
     formState: { errors },
   } = useForm();
-  const navigate = useNavigate();
   const [validate, setValidate] = useState(String);
 
   useEffect(() => {
@@ -35,7 +37,7 @@ const DeleteLinkForm: FC<DeleteProps> = ({ linkId }) => {
   const { mutateAsync: deleteLink, isLoading } =
     api.link.deleteLink.useMutation({
       onSuccess: () => {
-        navigate("/dashboard");
+        handleSuccess();
         notifications.show({
           title: "Success",
           message: DELETION_SUCCESS_MESSAGE,

@@ -1,7 +1,6 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button, TextInput, Textarea, Alert, Text } from "@mantine/core";
-import { useNavigate } from "react-router-dom";
 import { notifications } from "@mantine/notifications";
 import { api } from "trpc";
 import { editLinkSchema, EditLinkData } from "./models";
@@ -9,13 +8,19 @@ import { IconCheck } from "@tabler/icons-react";
 import { FC } from "react";
 import { IconInfoCircle } from "@tabler/icons-react";
 
-interface EditProps {
+interface EditLinkFormProps {
   linkId: string;
   url: string;
   description?: string;
+  handleSuccess?: () => void;
 }
 
-const EditLinkForm: FC<EditProps> = ({ linkId, url, description = "" }) => {
+const EditLinkForm: FC<EditLinkFormProps> = ({
+  linkId,
+  url,
+  description = "",
+  handleSuccess = () => {},
+}) => {
   const {
     handleSubmit,
     register,
@@ -24,11 +29,10 @@ const EditLinkForm: FC<EditProps> = ({ linkId, url, description = "" }) => {
     resolver: zodResolver(editLinkSchema),
     defaultValues: { url, description },
   });
-  const navigate = useNavigate();
 
   const { mutateAsync: editLink, isLoading } = api.link.editLink.useMutation({
     onSuccess: () => {
-      navigate("/dashboard");
+      handleSuccess();
       notifications.show({
         title: "Success",
         message: "Link edited successfully",

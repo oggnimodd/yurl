@@ -7,10 +7,11 @@ import {
   IconAdjustmentsHorizontal,
   IconQrcode,
 } from "@tabler/icons-react";
-import { FC } from "react";
+import { FC, memo } from "react";
 import { QRCodeSVG } from "qrcode.react";
 import { notifications } from "@mantine/notifications";
 import { DeleteLinkForm, EditLinkForm } from "components";
+import { api } from "trpc";
 
 export interface CardProps {
   id: string;
@@ -27,6 +28,7 @@ const Card: FC<CardProps> = ({ id, url, slug, description = "" }) => {
   const [isQRCodeOpen, handleQRCodeModal] = useDisclosure(false);
   const clipboard = useClipboard();
   const [menuOpened, toggleMenu] = useToggle([false, true] as const);
+  const apiUtils = api.useUtils();
 
   const targetUrl = `https://${window.location.host}/s/${slug}`;
 
@@ -39,6 +41,18 @@ const Card: FC<CardProps> = ({ id, url, slug, description = "" }) => {
     });
   };
 
+  const invalidateAllLinks = async () => apiUtils.link.allLinks.invalidate();
+
+  const handleDeletionSuccess = async () => {
+    handleDeleteModal.close();
+    await invalidateAllLinks();
+  };
+
+  const handleEditSuccess = async () => {
+    handleEditModal.close();
+    await invalidateAllLinks();
+  };
+
   return (
     <Paper
       p="md"
@@ -46,9 +60,9 @@ const Card: FC<CardProps> = ({ id, url, slug, description = "" }) => {
       className="flex justify-between rounded-lg border border-gray-8 p-4 transition-all hover:shadow-lg"
     >
       <div className="flex flex-col w-2/3">
-        <div className="flex items-center gap-x-3 mb-2 items-center">
+        <div className="flex items-center gap-x-3 mb-2 items-center w-full">
           <a
-            className="text-lg font-semibold text-black dark:text-gray-1 transition-all hover:text-blue-6 no-underline"
+            className="text-lg font-semibold text-black dark:text-gray-1 transition-all hover:text-blue-6 dark:hover:text-blue-6 no-underline sm:max-w-[100px] truncate"
             target="_blank"
             rel="noreferrer"
             href={targetUrl}
@@ -117,7 +131,12 @@ const Card: FC<CardProps> = ({ id, url, slug, description = "" }) => {
           onClose={handleEditModal.close}
           title={`Edit: /s/${slug}`}
         >
-          <EditLinkForm linkId={id} url={url} description={description} />
+          <EditLinkForm
+            handleSuccess={handleEditSuccess}
+            linkId={id}
+            url={url}
+            description={description}
+          />
         </Modal>
         <Modal
           centered
@@ -125,7 +144,7 @@ const Card: FC<CardProps> = ({ id, url, slug, description = "" }) => {
           onClose={handleDeleteModal.close}
           title={`Delete: /s/${slug}`}
         >
-          <DeleteLinkForm linkId={id} />
+          <DeleteLinkForm handleSuccess={handleDeletionSuccess} linkId={id} />
         </Modal>
 
         <Modal
@@ -149,4 +168,4 @@ const Card: FC<CardProps> = ({ id, url, slug, description = "" }) => {
   );
 };
 
-export default Card;
+export default memo(Card);
