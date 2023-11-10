@@ -1,7 +1,7 @@
 [build]
   functions = "apps/react/netlify/functions"
 [functions]
-  external_node_modules = ["express"]
+  external_node_modules = ["express", "@libsql/client"]
   node_bundler = "esbuild"
 [[redirects]]
   force = true
