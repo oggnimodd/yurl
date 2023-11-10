@@ -1,10 +1,11 @@
-import { CommonLayout } from "layouts";
+import { DashboardLayout } from "layouts";
+import { Dashboard } from "components";
 
 const Home = () => {
   return (
-    <CommonLayout>
-      <p>This is dashboard</p>
-    </CommonLayout>
+    <DashboardLayout>
+      <Dashboard />
+    </DashboardLayout>
   );
 };
 
