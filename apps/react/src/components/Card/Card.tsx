@@ -30,7 +30,7 @@ const Card: FC<CardProps> = ({ id, url, slug, description = "" }) => {
   const [menuOpened, toggleMenu] = useToggle([false, true] as const);
   const apiUtils = api.useUtils();
 
-  const targetUrl = `https://${window.location.host}/s/${slug}`;
+  const targetUrl = `${window.location.protocol}//${window.location.host}/s/${slug}`;
 
   const copyUrl = () => {
     clipboard.copy(targetUrl);
