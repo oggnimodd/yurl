@@ -12,7 +12,6 @@
     "**/.turbo": true,
     "**/tsconfig.tsbuildinfo": true,
     "**/.astro": true,
-    "**/react": true,
     "**/nextjs": true
   },
   "editor.defaultFormatter": "biomejs.biome",
