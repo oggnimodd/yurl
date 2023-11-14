@@ -8,9 +8,10 @@ import {
   IconSearch,
   IconBrandGithub,
   IconPlus,
+  IconBrandVue,
 } from "@tabler/icons-react";
 import { openLinkInNewTab } from "utils/navigation";
-import { REPO_URL } from "constants/meta";
+import { REPO_URL, VUE_VERSION_URL } from "constants/meta";
 
 const commandPaletteIconBaseProps: {
   style: CSSProperties;
@@ -55,6 +56,13 @@ const CommandPalette = () => {
         description: "See source code",
         onClick: () => openLinkInNewTab(REPO_URL),
         leftSection: <IconBrandGithub {...commandPaletteIconBaseProps} />,
+      },
+      {
+        id: "vue-version",
+        label: "Vue Version",
+        description: "See Vue version",
+        onClick: () => openLinkInNewTab(VUE_VERSION_URL),
+        leftSection: <IconBrandVue {...commandPaletteIconBaseProps} />,
       },
     ];
   }, []);
