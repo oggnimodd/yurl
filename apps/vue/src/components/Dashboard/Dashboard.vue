@@ -69,14 +69,11 @@ const showNoResults = computed(
       <p>Loading...</p>
     </div>
 
-    <div
-      v-if="showNoLinks"
-      class="flex flex-col items-center justify-center py-10"
-    >
-      <i class="pi pi-rocket text-6xl"></i>
+    <div v-if="showNoLinks" class="flex flex-col items-center py-10">
+      <i class="pi pi-exclamation-triangle text-primary-500 text-5xl"></i>
       <p class="mb-4 text-lg">Lets create your first link!</p>
       <router-link to="/new">
-        <Button size="small" icon="pi pi-plus"> Create a link </Button>
+        <Button size="small" icon="pi pi-plus" label="Create a link" />
       </router-link>
     </div>
 
