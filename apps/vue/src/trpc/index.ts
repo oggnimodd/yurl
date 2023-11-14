@@ -11,7 +11,7 @@ export const getCookie = (name: string) => {
 export const api = createTRPCProxyClient<typeof appRouter>({
   links: [
     httpBatchLink({
-      url: "http://localhost:8080/trpc",
+      url: import.meta.env.VITE_APP_TRPC_URL || "http://localhost:8080/trpc",
       // You can pass any HTTP headers you wish here
       async headers() {
         return {
