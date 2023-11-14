@@ -7,6 +7,8 @@ import { useToast } from "primevue/usetoast";
 import { api } from "@/trpc";
 import { useMutation } from "@tanstack/vue-query";
 import { nanoid } from "nanoid";
+import Message from "primevue/message";
+import FormFieldWrapper from "./FormFieldWrapper.vue";
 
 const VALIDATION_ERROR_MESSAGE =
   "The values do not match. Check the validation.";
@@ -15,13 +17,13 @@ const DELETION_SUCCESS_MESSAGE = "Link deleted successfully";
 
 interface DeleteLinkFormProps {
   linkId: string;
-  handleSuccess?: () => void;
+  handleSuccess?: () => Promise<void>;
 }
 
 const { linkId, handleSuccess } = withDefaults(
   defineProps<DeleteLinkFormProps>(),
   {
-    handleSuccess: () => {},
+    handleSuccess: () => Promise.resolve(),
   },
 );
 
@@ -37,8 +39,8 @@ const { mutateAsync: deleteLink, isPending } = useMutation({
   mutationFn: async () => {
     return api.link.deleteLink.mutate({ linkId });
   },
-  onSuccess: () => {
-    handleSuccess();
+  onSuccess: async () => {
+    await handleSuccess();
     toast.add({
       severity: "success",
       summary: "Success",
@@ -75,22 +77,24 @@ const onSubmit = handleSubmit(() => {
 
 <template>
   <form @submit.prevent="onSubmit">
-    <div class="mb-3 font-semibold">
+    <Message severity="error" class="mb-3 font-semibold">
       Are you sure you want to delete this link? This action is irreversible.
-    </div>
+    </Message>
     <div class="mb-5">
-      <div>Enter the following to confirm:</div>
-      <div>{{ validationTarget }}</div>
-      <div class="mt-3">
+      <div class="font-semibold mb-1">Enter the following to confirm:</div>
+      <div class="text-primary-500 italic font-bold mb-3">
+        {{ validationTarget }}
+      </div>
+      <FormFieldWrapper>
         <InputText
           v-bind="validate"
           placeholder="..."
           :class="{ 'p-invalid': errors.validate }"
         />
-        <small v-if="errors.validate" class="p-error">{{
-          errors.validate
-        }}</small>
-      </div>
+        <small v-if="errors.validate" class="p-error">
+          {{ errors.validate }}
+        </small>
+      </FormFieldWrapper>
     </div>
     <div class="mt-5 flex justify-end">
       <Button
@@ -98,6 +102,7 @@ const onSubmit = handleSubmit(() => {
         icon="pi pi-trash"
         label="Delete link"
         type="submit"
+        size="small"
       />
     </div>
   </form>

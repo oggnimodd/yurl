@@ -5,6 +5,7 @@ import { watch } from "vue";
 import { useAuth, useClerk } from "vue-clerk";
 import { useRoute, useRouter } from "vue-router";
 import { appearance } from "@/clerk";
+import ProgressSpinner from "primevue/progressspinner";
 
 interface Props {
   requireAuth?: boolean;
@@ -48,7 +49,13 @@ onMounted(async () => {
   <div>
     <Header />
     <div class="container max-w-4xl mx-auto">
-      <div v-if="requireAuth && !isLoaded">Loading...</div>
+      <div
+        v-if="requireAuth && !isLoaded"
+        class="flex flex-col items-center justify-center items-center py-10"
+      >
+        <ProgressSpinner />
+        <p>Loading...</p>
+      </div>
       <slot v-else-if="!requireAuth || (isLoaded && isSignedIn)">
         Fallback layout
       </slot>

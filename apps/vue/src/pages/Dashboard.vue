@@ -1,7 +1,10 @@
 <script setup lang="ts">
-import { CommonLayout } from "@/layouts";
+import { DashboardLayout } from "@/layouts";
+import { Dashboard } from "@/components";
 </script>
 
 <template>
-  <CommonLayout> This is the dashboard </CommonLayout>
+  <DashboardLayout>
+    <Dashboard />
+  </DashboardLayout>
 </template>

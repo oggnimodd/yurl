@@ -20,7 +20,7 @@ const handleSignIn = () => {
   });
 };
 
-const menuRef = ref();
+const menuRef: Ref<InstanceType<typeof Menu> | null> = ref(null);
 
 const menuItems: Ref<MenuProps["model"]> = ref([
   {
@@ -48,8 +48,10 @@ const menuItems: Ref<MenuProps["model"]> = ref([
   },
 ]);
 
-const toggle = (event: MouseEvent) => {
-  menuRef.value.toggle(event);
+const toggle = (event: Event) => {
+  if (menuRef.value) {
+    menuRef.value.toggle(event);
+  }
 };
 </script>
 
