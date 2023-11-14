@@ -66,9 +66,9 @@ const handleDeletionSuccess = async () => {
   await invalidateAllLinks();
 };
 const handleEditSuccess = async () => {
-  window.location.reload();
   toggleEditModal();
   await invalidateAllLinks();
+  window.location.reload();
 };
 
 const menuItems: Ref<MenuProps["model"]> = ref([
