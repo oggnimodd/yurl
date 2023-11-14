@@ -20,5 +20,5 @@ export const api = createTRPCProxyClient<typeof appRouter>({
       },
     }),
   ],
-  transformer: superjson,
+  transformer: superjson as any,
 });
