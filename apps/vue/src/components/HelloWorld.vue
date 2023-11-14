@@ -1,20 +1,18 @@
 <script setup lang="ts">
-import { watch } from 'vue';
-import { useAuth } from 'vue-clerk'
-import { SignInButton, SignOutButton } from 'vue-clerk'
-import { useQueryClient } from '@tanstack/vue-query';
+import { watch } from "vue";
+import { useAuth } from "vue-clerk";
+import { SignInButton, SignOutButton } from "vue-clerk";
+import { useQueryClient } from "@tanstack/vue-query";
 
 const queryClient = useQueryClient();
 
-
-const { isLoaded, userId } = useAuth()
+const { isLoaded, userId } = useAuth();
 
 watch(userId, () => {
   queryClient.invalidateQueries({
-    queryKey: ["message"]
-  })
-})
-
+    queryKey: ["message"],
+  });
+});
 </script>
 
 <template>

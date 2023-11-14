@@ -1,32 +1,22 @@
 <script setup lang="ts">
 import { api } from "../../src/trpc";
-import { useQuery } from '@tanstack/vue-query';
+import { useQuery } from "@tanstack/vue-query";
 
-const {
-  isLoading,
-  data,
-} = useQuery({
+const { isLoading, data } = useQuery({
   queryKey: ["message"],
   queryFn: async () => {
-    return api.auth.getSecretMessage.query()
+    return api.auth.getSecretMessage.query();
   },
   refetchOnWindowFocus: false,
 });
-
-
-</script>  
-
+</script>
 
 <template>
-  <div v-if="isLoading">
-    loading ...
-  </div>
+  <div v-if="isLoading">loading ...</div>
 
   <div v-if="!isLoading && data">
     <p>{{ data }}</p>
   </div>
 
-  <div v-if="!isLoading && !data">
-    You need to login first
-  </div>
-</template>../../src/trpc
+  <div v-if="!isLoading && !data">You need to login first</div>
+</template>

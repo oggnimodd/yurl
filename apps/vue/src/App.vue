@@ -1,21 +1,10 @@
 <script setup lang="ts">
-import { HelloWorld, Data } from "./components";
-import ProgressSpinner from "primevue/progressspinner";
-import { useAuth } from "vue-clerk";
-
-const { isLoaded } = useAuth();
-
+import Toast from "primevue/toast";
+import { VueQueryDevtools } from "@tanstack/vue-query-devtools";
 </script>
 
 <template>
-  <div>
-
-    <div v-if="!isLoaded">
-      <ProgressSpinner stroke-width="4" />
-    </div>
-
-    <HelloWorld />
-    <Data />
-  </div>
+  <VueQueryDevtools />
+  <Toast position="bottom-right" :auto-z-index="true" />
+  <router-view></router-view>
 </template>
-
