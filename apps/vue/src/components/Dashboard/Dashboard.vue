@@ -50,7 +50,14 @@ const showNoResults = computed(
 
 <template>
   <div>
-    <div v-if="showError" class="flex flex-col items-center py-5 gap-3">
+    <span v-if="showLinks" class="p-input-icon-left max-w-sm mx-auto mt-2 mb-6">
+      <i class="pi pi-search"></i>
+      <InputText v-model="filter" placeholder="Search links" />
+    </span>
+    <div
+      v-if="!showLinks && showError"
+      class="flex flex-col items-center py-5 gap-3"
+    >
       <i class="pi pi-exclamation-triangle text-red-500 text-6xl"></i>
       <p class="text-center">
         {{ error?.message }}
@@ -61,11 +68,6 @@ const showNoResults = computed(
       <ProgressSpinner class="w-16 h-16" />
       <p>Loading...</p>
     </div>
-
-    <span class="p-input-icon-left max-w-sm mx-auto mt-2 mb-6">
-      <i class="pi pi-search"></i>
-      <InputText v-model="filter" placeholder="Search links" />
-    </span>
 
     <div
       v-if="showNoLinks"
