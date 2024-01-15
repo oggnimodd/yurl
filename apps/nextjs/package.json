@@ -20,7 +20,7 @@
     "ladle:preview": "bun with-env ladle preview"
   },
   "dependencies": {
-    "@clerk/nextjs": "^4.23.2",
+    "@clerk/nextjs": "4.29.3",
     "@headlessui/react": "^1.7.17",
     "@ladle/react": "^3.3.0",
     "@nextui-org/react": "^2.1.13",
