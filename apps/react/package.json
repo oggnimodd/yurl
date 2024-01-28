@@ -14,7 +14,7 @@
     "netlify:dev": "NODE_ENV=development VITE_APP_TRPC_URL='http://localhost:8888/api/trpc' bun with-env netlify dev"
   },
   "dependencies": {
-    "@clerk/clerk-react": "^4.27.1",
+    "@clerk/clerk-react": "^4.30.3",
     "@hookform/resolvers": "^3.3.2",
     "@ladle/react": "^2.17.2",
     "@mantine/core": "^7.1.7",

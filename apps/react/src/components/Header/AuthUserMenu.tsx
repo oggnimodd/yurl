@@ -23,9 +23,9 @@ const AuthUserMenu = () => {
 
   if (isLoaded && !user)
     return (
-      <Button afterSignInUrl="/dashboard" component={SignInButton}>
-        Login
-      </Button>
+      <SignInButton afterSignInUrl="/dashboard">
+        <Button>Login</Button>
+      </SignInButton>
     );
 
   const handleSignOut = () => {
