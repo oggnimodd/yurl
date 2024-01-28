@@ -43,8 +43,8 @@
   },
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
-    "quickfix.rome": true,
-    "source.fixAll.eslint": true
+    "quickfix.biome": "explicit",
+    "source.fixAll.eslint": "explicit"
   },
   "eslint.validate": ["vue"]
 }
