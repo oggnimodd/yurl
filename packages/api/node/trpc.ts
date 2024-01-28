@@ -54,22 +54,20 @@ export const createTRPCContext = async (opts: FetchCreateContextFnOptions) => {
     return await createInnerTRPCContext({
       auth: requestState.toAuth() as unknown as AuthContextProps["auth"],
     });
-  } else {
-    // Express
-    const request = opts.req as FetchCreateContextFnOptions["req"] & {
-      auth: AuthContextProps["auth"];
-    };
-    const auth = request.auth;
-
-    // Express
-    if (auth) {
-      return await createInnerTRPCContext({
-        auth,
-      });
-    } else {
-      return await createInnerTRPCContext({ auth: {} } as AuthContextProps);
-    }
   }
+  // Express
+  const request = opts.req as FetchCreateContextFnOptions["req"] & {
+    auth: AuthContextProps["auth"];
+  };
+  const auth = request.auth;
+
+  // Express
+  if (auth) {
+    return await createInnerTRPCContext({
+      auth,
+    });
+  }
+  return await createInnerTRPCContext({ auth: {} } as AuthContextProps);
 };
 
 const t = initTRPC

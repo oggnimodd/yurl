@@ -22,9 +22,8 @@ const ProtectedRoute: FC<ProtectedRouteProps> = ({ children, path }) => {
       afterSignUpUrl: path,
     });
     return <Navigate to="/" />;
-  } else {
-    return children;
   }
+  return children;
 };
 
 export default ProtectedRoute;

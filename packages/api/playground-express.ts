@@ -34,6 +34,6 @@ app.use(
   }),
 );
 
-app.listen(PORT, function () {
+app.listen(PORT, () => {
   console.log(`server is running on port ${PORT}`);
 });

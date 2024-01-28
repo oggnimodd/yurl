@@ -9,7 +9,7 @@ function reducer(obj, hex, index) {
 function generateColors() {
   const colors = {};
 
-  Object.keys(openColor).forEach(function (name) {
+  Object.keys(openColor).forEach((name) => {
     const color = openColor[name];
 
     if (typeof color === "string") {
