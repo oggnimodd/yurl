@@ -1,1 +1,0 @@
-The only reason this folder exists is that developing a Next.js project on a low-end machine is too slow compared to using Vite.

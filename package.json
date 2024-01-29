@@ -21,14 +21,16 @@
     "lint-staged": "^13.2.2"
   },
   "lint-staged": {
-    "**/*.{js,ts,jsx,tsx}": ["biome check --apply .", "biome format --write ."]
+    "**/*.{js,ts,jsx,tsx}": [
+      "biome check --apply .",
+      "biome format --write ."
+    ]
   },
   "workspaces": [
-    "apps/nextjs",
+    "apps/nextjs-api",
     "apps/react",
     "apps/vue",
     "packages/db",
-    "packages/api",
-    "packages/express-serverless"
+    "packages/api"
   ]
 }

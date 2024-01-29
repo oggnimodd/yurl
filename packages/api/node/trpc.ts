@@ -39,35 +39,20 @@ const createInnerTRPCContext = async ({ auth }: AuthContextProps) => {
  * @link https://trpc.io/docs/context
  */
 export const createTRPCContext = async (opts: FetchCreateContextFnOptions) => {
-  if (JSON.stringify(Object.keys(opts)) === `["req","resHeaders"]`) {
-    // Elysia
-    const requestState = await clerkClient.authenticateRequest({
-      secretKey: SECRET_KEY,
-      publishableKey: PUBLISHABLE_KEY,
-      request: opts.req,
-    });
+  // Elysia
+  const requestState = await clerkClient.authenticateRequest({
+    secretKey: SECRET_KEY,
+    publishableKey: PUBLISHABLE_KEY,
+    request: opts.req,
+  });
 
-    if (!requestState || !requestState.toAuth()) {
-      return await createInnerTRPCContext({ auth: {} } as AuthContextProps);
-    }
-
-    return await createInnerTRPCContext({
-      auth: requestState.toAuth() as unknown as AuthContextProps["auth"],
-    });
+  if (!requestState || !requestState.toAuth()) {
+    return await createInnerTRPCContext({ auth: {} } as AuthContextProps);
   }
-  // Express
-  const request = opts.req as FetchCreateContextFnOptions["req"] & {
-    auth: AuthContextProps["auth"];
-  };
-  const auth = request.auth;
 
-  // Express
-  if (auth) {
-    return await createInnerTRPCContext({
-      auth,
-    });
-  }
-  return await createInnerTRPCContext({ auth: {} } as AuthContextProps);
+  return await createInnerTRPCContext({
+    auth: requestState.toAuth() as unknown as AuthContextProps["auth"],
+  });
 };
 
 const t = initTRPC

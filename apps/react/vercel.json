@@ -1,0 +1,10 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "devCommand": "bun run vercel:dev",
+  "rewrites": [
+    {
+      "source": "/s/:slug",
+      "destination": "/api/s/:slug"
+    }
+  ]
+}

@@ -1,28 +1,35 @@
-import { trpc } from "@elysiajs/trpc";
-import { Elysia } from "elysia";
-import { appRouter } from "./node/root";
-import { clerkPlugin } from "./node/plugins/clerk";
-import { cors } from "@elysiajs/cors";
+import { trpcServer } from "@hono/trpc-server";
+import { Hono } from "hono";
+import { appRouter } from "../api/node";
+import { clerkMiddleware } from "@hono/clerk-auth";
+import { cors } from "hono/cors";
 import { createTRPCContext } from "./node/trpc";
 import { renderTrpcPanel } from "trpc-panel";
 
 const PORT = 8080;
 
-const app = new Elysia()
-  .use(cors())
-  .use(clerkPlugin())
-  .get("/panel", ({ set }) => {
-    set.headers["Content-Type"] = "text/html";
-    return renderTrpcPanel(appRouter, {
-      url: `http://localhost:${PORT}/trpc`,
-      transformer: "superjson",
-    });
+const API_URL = "";
+
+const app = new Hono()
+  .use("*", cors())
+  .use("*", clerkMiddleware())
+  .get("/panel", (c) => {
+    return c.html(
+      renderTrpcPanel(appRouter, {
+        url: `http://localhost:${PORT}/trpc`,
+        transformer: "superjson",
+      }),
+    );
   })
   .use(
-    trpc(appRouter, {
+    `${API_URL}/trpc/*`,
+    trpcServer({
+      router: appRouter,
       createContext: createTRPCContext,
     }),
-  )
-  .listen(PORT);
+  );
 
-console.log(`server is running on port ${PORT}`);
+export default {
+  port: PORT,
+  fetch: app.fetch,
+};

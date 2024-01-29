@@ -7,7 +7,7 @@ import {
 } from "../../schema";
 
 import { z } from "zod";
-import { createTRPCRouter, protectedProcedure } from "../trpc";
+import { createTRPCRouter, protectedProcedure, publicProcedure } from "../trpc";
 
 export const linkRouter = createTRPCRouter({
   // Create new link =>
@@ -62,8 +62,6 @@ export const linkRouter = createTRPCRouter({
   allLinks: protectedProcedure
     .input(FilterLinkSchema)
     .query(({ ctx, input }) => {
-      console.log(input);
-
       return ctx.prisma.link?.findMany({
         where: {
           creatorId: ctx.auth.userId,
@@ -83,12 +81,12 @@ export const linkRouter = createTRPCRouter({
     }),
 
   // Get single link =>
-  singleLink: protectedProcedure
+  singleLink: publicProcedure
     .input(getSingleLinkSchema)
     .query(({ ctx, input }) => {
       return ctx.prisma.link?.findUnique({
         where: {
-          id: input.linkId,
+          slug: input.linkId,
         },
       });
     }),

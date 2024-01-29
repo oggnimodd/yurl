@@ -18,5 +18,13 @@ export const postRouter = createTRPCRouter({
   delete: protectedProcedure.input(z.string()).mutation(({ ctx, input }) => {
     return ctx.prisma.post.delete({ where: { id: input } });
   }),
-  hello: publicProcedure.query(() => "hello world"),
+  hello: publicProcedure.query(() => {
+    return "Hello world";
+  }),
+  world: publicProcedure.input(z.string()).query(({ input }) => {
+    return `Yahooo ${input}`;
+  }),
+  protected: protectedProcedure.query(() => {
+    return "congrats";
+  }),
 });

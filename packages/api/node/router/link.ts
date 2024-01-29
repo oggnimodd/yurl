@@ -62,8 +62,6 @@ export const linkRouter = createTRPCRouter({
   allLinks: protectedProcedure
     .input(FilterLinkSchema)
     .query(({ ctx, input }) => {
-      console.log(input);
-
       return ctx.prisma.link?.findMany({
         where: {
           creatorId: ctx.auth.userId,
@@ -88,7 +86,7 @@ export const linkRouter = createTRPCRouter({
     .query(({ ctx, input }) => {
       return ctx.prisma.link?.findUnique({
         where: {
-          id: input.linkId,
+          slug: input.linkId,
         },
       });
     }),

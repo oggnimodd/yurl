@@ -12,7 +12,8 @@
     "**/.turbo": true,
     "**/tsconfig.tsbuildinfo": true,
     "**/.astro": true,
-    "**/nextjs": true
+    "**/nextjs": true,
+    "**/vercel-functions": true
   },
   "editor.defaultFormatter": "biomejs.biome",
   "typescript.tsdk": "node_modules/typescript/lib",
